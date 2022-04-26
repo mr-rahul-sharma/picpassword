@@ -1,0 +1,77 @@
+body
+{
+    background-color: lightgray;
+}
+ul.top
+{
+    list-style-type: none;
+    margin: 0%;
+}
+ul.top > li
+{
+    display: inline-block;
+    margin: 0% 1%;
+}
+a, a:hover, a:active, a:visited
+{
+    text-decoration: none;
+    color: blue;
+}
+form
+{
+    margin-left: 40%;
+    margin-top: 2%;
+}
+form > label, form > input, form > select
+{
+    margin: 1% 0%;
+    display: block;
+}
+form > input, form > select
+{
+    padding: 0.5% 1%;
+    font-size: 105%;
+}
+form > button
+{
+    display: block;
+    color: white;
+    background-color: green;
+    margin: 1% 0%;
+    font-size: 105%;
+    padding: 1% 2%;
+    border: none;
+}
+form > button:hover
+{
+    background-color: blue;
+    cursor: pointer;
+}
+div.messages
+{
+    color: blue;
+    background-color: white;
+    font-style: italic;
+    padding: 0.5% 0.5%;
+    margin: 0%;
+    text-align: center;
+}
+div.content
+{
+    margin-top: 5%;
+    margin-left: 10%;
+    width: 80%;
+}
+div > img
+{
+    width: 15%;
+    background-color: transparent;
+}
+div > img:hover
+{
+    opacity: 0.5;
+}
+div#x, div#y, div#z
+{
+    display: none;
+}

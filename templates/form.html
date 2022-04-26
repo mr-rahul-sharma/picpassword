@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    {% if otpform %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="otp">OTP</label>
+            <input type="number" name="otp" pattern="[0-9]{6}" title="6 digits" required>
+            <button type="submit">Check OTP</button>
+        </form>
+    {% elif usernameform %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" pattern="[a-zA-Z0-9@.+-_]{1,150}" title="Atmost 150 characters(Alphanumeric and @ . + - _ only)" required>
+            <button type="submit">Submit</button>
+        </form>
+    {% elif emailform %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="email">Email</label>
+            <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Enter a valid email." required>
+            <button type="submit">Submit</button>
+        </form>
+    {% elif passwordform %}
+        <form method="post" onsubmit="createPassword(this)">
+            {% csrf_token %}
+            <label for="passwordtype">Password Category</label>
+            <select id="passwordtype" name="passwordtype" onchange="getPasswordType(this)" required>
+                <option selected style="display:none;"></option>
+                <option value="x">Creatures</option>
+                <option value="y">Food</option>
+                <option value="z">Transport</option>
+            </select>
+            <diV id="x">
+                {% for image in imageset %}
+                    {% for i in image %}
+                        {% with 'images/creatures/'|add:i|add:'.png' as imageloc %}
+                            <img src="{% static imageloc %}" id="x{{i}}" onclick="imageClick(this)">
+                        {% endwith %}
+                    {% endfor %}<br>
+                {% endfor %}
+            </diV>
+            <diV id="y">
+                {% for image in imageset %}
+                    {% for i in image %}
+                        {% with 'images/food/'|add:i|add:'.png' as imageloc %}
+                            <img src="{% static imageloc %}" id="y{{i}}" onclick="imageClick(this)">
+                        {% endwith %}
+                    {% endfor %}<br>
+                {% endfor %}
+            </diV>
+            <div id="z">
+                {% for image in imageset %}
+                    {% for i in image %}
+                        {% with 'images/transport/'|add:i|add:'.png' as imageloc %}
+                            <img src="{% static imageloc %}" id="z{{i}}" onclick="imageClick(this)">
+                        {% endwith %}
+                    {% endfor %}<br>
+                {% endfor %}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    {% elif loginform %}
+        <form method="post" onsubmit="createPassword(this)">
+            {% csrf_token %}
+            <label for="id">Username or Email</label>
+            <input type="text" name="id" maxlength="150" required>
+            <label for="passwordtype">Password Category</label>
+            <select id="passwordtype" name="passwordtype" onchange="getPasswordType(this)" required>
+                <option selected style="display:none;"></option>
+                <option value="x">Creatures</option>
+                <option value="y">Food</option>
+                <option value="z">Transport</option>
+            </select>
+            <diV id="x">
+                {% for image in imageset %}
+                    {% for i in image %}
+                        {% with 'images/creatures/'|add:i|add:'.png' as imageloc %}
+                            <img src="{% static imageloc %}" id="x{{i}}" onclick="imageClick(this)">
+                        {% endwith %}
+                    {% endfor %}<br>
+                {% endfor %}
+            </diV>
+            <diV id="y">
+                {% for image in imageset %}
+                    {% for i in image %}
+                        {% with 'images/food/'|add:i|add:'.png' as imageloc %}
+                            <img src="{% static imageloc %}" id="y{{i}}" onclick="imageClick(this)">
+                        {% endwith %}
+                    {% endfor %}<br>
+                {% endfor %}
+            </diV>
+            <div id="z">
+                {% for image in imageset %}
+                    {% for i in image %}
+                        {% with 'images/transport/'|add:i|add:'.png' as imageloc %}
+                            <img src="{% static imageloc %}" id="z{{i}}" onclick="imageClick(this)">
+                        {% endwith %}
+                    {% endfor %}<br>
+                {% endfor %}
+            </div>
+            <p>Forgot Password? <a href="/resetpassword">Reset</a></p>
+            <button type="submit">Login</button>
+            <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+        </form>
+    {% elif signupform %}
+        <form method="post" onsubmit="createPassword(this)">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" pattern="[a-zA-Z0-9@.+-_]{1,150}" title="Atmost 150 characters(Alphanumeric and @ . + - _ only)" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Enter a valid email." required>
+            <label for="passwordtype">Password Category</label>
+            <select id="passwordtype" name="passwordtype" onchange="getPasswordType(this)" required>
+                <option selected style="display:none;"></option>
+                <option value="x">Creatures</option>
+                <option value="y">Food</option>
+                <option value="z">Transport</option>
+            </select>
+            <diV id="x">
+                {% for image in imageset %}
+                    {% for i in image %}
+                        {% with 'images/creatures/'|add:i|add:'.png' as imageloc %}
+                            <img src="{% static imageloc %}" id="x{{i}}" onclick="imageClick(this)">
+                        {% endwith %}
+                    {% endfor %}<br>
+                {% endfor %}
+            </diV>
+            <diV id="y">
+                {% for image in imageset %}
+                    {% for i in image %}
+                        {% with 'images/food/'|add:i|add:'.png' as imageloc %}
+                            <img src="{% static imageloc %}" id="y{{i}}" onclick="imageClick(this)">
+                        {% endwith %}
+                    {% endfor %}<br>
+                {% endfor %}
+            </diV>
+            <div id="z">
+                {% for image in imageset %}
+                    {% for i in image %}
+                        {% with 'images/transport/'|add:i|add:'.png' as imageloc %}
+                            <img src="{% static imageloc %}" id="z{{i}}" onclick="imageClick(this)">
+                        {% endwith %}
+                    {% endfor %}<br>
+                {% endfor %}
+            </div>
+            <button type="submit">Sign Up</button>
+            <p>Already have an account? <a href="/login">Login</a></p>
+        </form>
+    {% endif %}
+{% endblock content %}

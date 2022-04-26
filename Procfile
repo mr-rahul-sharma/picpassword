@@ -1,0 +1,1 @@
+web: gunicorn picpassword.wsgi --log-file -

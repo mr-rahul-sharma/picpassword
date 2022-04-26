@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    {% if username %}
+        <div class="content">
+            <h2>Welcome Home! {{username}}</h2>
+            Go to your <a href="/profile/{{username}}">profile</a><br><br>
+            Or, <a href="/logout">Log Out</a><br><br>
+        </div>
+    {% else %}
+        <div class="content">
+            <h2>Welcome Home!</h2>
+            <a href="/login">Login</a> to your account.<br><br>
+            <a href="/signup">Signup</a> a new account.<br><br>
+        </div>
+    {% endif %}
+{% endblock content %}

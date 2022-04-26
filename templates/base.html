@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PicPassword</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Rahul Sharma">
+        <meta name="description" content="Graphical Password Authentication">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{% static 'images/logo.png' %}" type="image/icon type">
+        <link rel="stylesheet" href="{% static 'theme.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="{% static 'working.js' %}"></script>
+    </head>
+    <body>
+        <ul class="top">
+            <li><h1><a href="/" style="color: black;">PicPassword</a></h1></li>
+            <li><h3><a href="/aboutus" style="color: black;">About Us</a></h3></li>
+        </ul>
+        {% for message in messages %}
+            <div class="messages">{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock content %}
+    </body>
+</html>
